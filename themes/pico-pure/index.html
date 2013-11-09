@@ -1,0 +1,45 @@
+{% include "head.twig" %}
+{{ mcb_toc_top }}
+        <div id="container" class="pure-g-r">
+            {% include "sidebar.twig" %}
+            <div class="pure-u-1">
+                <div id="content">
+{% if is_front_page %}
+{% for page in pages %}
+{% if page.date and not(page.url == base_url~'/') %}
+		    <div class="post">
+                <div class="tags">
+                    <!-- display page tags with proper urls -->
+                    {% for tag in page.tags %}
+                        <a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>
+                    {% endfor %}
+                </div> 
+		        <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+		        <p class="meta">Published {{ page.date_formatted }}</p>
+		        <p class="excerpt">{{ page.excerpt }}</p>                
+		    </div>
+{% endif %}
+{% endfor %}
+{% else %}
+		    <div class="post">
+{% if meta.title %}
+		        <h2>{{ meta.title }}</h2>
+                <div class="tags">
+                <!-- display single page tags with proper urls -->
+                {% for tag in meta.tags %}
+                    <a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>
+                {% endfor %}
+        </div>
+{% endif %}
+{% if meta.date %}
+		        <p class="meta">Published {{ meta.date_formatted }}</p>
+{% endif %}
+                {{ mcb_toc }}
+		        {% spaceless %}{{ content }}{% endspaceless %}
+				
+		    </div>
+{% endif %}
+                </div>
+            </div>
+        </div>
+{% include "foot.twig" %}

@@ -1,0 +1,17 @@
+<div class="sidebar pure-u">
+    <a href="{{ base_url }}">
+    <img id="logo" src="{{ theme_url }}/images/{{ logo ? logo : 'logo' }}.png" alt="{{ site_title }}" />
+    </a>
+    <div class="pure-menu pure-menu-open pure-menu-custom header">
+        <input type="checkbox" id="toggle" />
+        <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+        <ul class="menu">
+        {% for page in pages | sort %}
+            {% if not(page.date) and not(page.url == base_url~'/') and page.navigation == 'yes' %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+

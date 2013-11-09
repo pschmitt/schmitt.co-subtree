@@ -1,0 +1,13 @@
+{% include "head.twig" %}
+        <div id="container" class="pure-g-r">
+            {% include "sidebar.twig" with { 'logo': 'logo-pschmitt' } %}
+
+            <div class="pure-u-1">
+                <div id="content">
+                    <div class="post">
+                        {% spaceless %}{{ content }}{% endspaceless %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% include "foot.twig" %}
