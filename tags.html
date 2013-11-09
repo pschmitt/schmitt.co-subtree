@@ -1,0 +1,23 @@
+{% include "head.twig" %}
+        <div id="container" class="pure-g-r">
+            {% include "sidebar.twig" %}
+
+            <div class="pure-u-1">
+                <div id="content">
+                    <div class="post">
+                        {% if meta.title %}
+                            <h2>{{ meta.title }}</h2>
+                        {% endif %}
+                        <div class="tags">
+                        {% for page in pages %}
+                            <!-- display single page tags with proper urls -->
+                            {% for tag in page.tags %}
+                                <a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>
+                            {% endfor %}
+                        {% endfor %}
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+{% include "foot.twig" %}
